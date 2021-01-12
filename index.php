@@ -1,5 +1,5 @@
 <?php include"inc/header.inc.php" ?>
-<?php if($_GET['form']=="success") {  echo "<div class='alert alert-success text-center' role='alert'>Nous avons bien reçu votre mail, notre équipe reviendra vers vous très vite!</div>"; } ?>
+<!-- <?php if($_GET['form']=="success") {  echo "<div class='alert alert-success text-center' role='alert'>Nous avons bien reçu votre mail, notre équipe reviendra vers vous très vite!</div>"; } ?> -->
 
 <title>AlphaScan3D | Le Scan 3D Pour Tous.</title>
 
