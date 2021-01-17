@@ -33,7 +33,12 @@ class User extends Database
                 $_SESSION['user_lastName'] = $data['user_lastName'];
                 $_SESSION['user_email'] = $data['user_email'];
 
-                header('Location: loginView.php?error=connected');
+
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == 6) {
+                    header('Location: adminView.php?error=admin');
+                } else {
+                    header('Location: loginView.php?error=connected');
+                }
             } else {
                 header('Location: loginView.php?error=password');
             }
@@ -81,7 +86,7 @@ class User extends Database
                                     'email' => $email,
                                     'pass' => $password,
                                 ));
-                            } catch(\PDOException $e) {
+                            } catch (\PDOException $e) {
                                 echo $e;
                             }
                             echo 'Bien inscrit !';
@@ -142,6 +147,6 @@ class User extends Database
 
         session_destroy();
 
-        header('location: loginView.php');
+        // header('location: loginView.php');
     }
 }
