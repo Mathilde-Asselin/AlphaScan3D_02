@@ -58,11 +58,29 @@ session_start();
 <!-- Permet de se déconnecter de la page -->
 <?php
 
+if (isset($_GET['modifier'])) {
+?>
+    <form action=<?php echo "profilView.php?modifier=" . $_GET['modifier'] ?> method="post" id="modif">
+        <input type="text" name="<?= $_GET['modifier'] ?>" id="modifier">
+        <button type="submit">Modifier</button>
+    </form>
+<?php
+
+    if (isset($_POST[$_GET['modifier']])) {
+        if ($_GET['modifier'] === 'user_password') {
+            $user->updatePassword($_POST[$_GET['modifier']], $_SESSION['user_id']);
+            header("location: profilView.php");
+        } else {
+            $user->updateUser($_GET['modifier'], $_POST[$_GET['modifier']], $_SESSION['user_id']);
+            header("location: profilView.php");
+        }
+    }
+
     if ($_GET['modifier'] === 'disconnect') {
         $user->disconnect($_SESSION['user_id']);
         echo 'test';
     }
-
+}
 ?>
 
 <!-- Lien pour ajouter le footer à la page -->
